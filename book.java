@@ -2,22 +2,22 @@ import java.io.Serializable;
 
 
 @SuppressWarnings("serial")
-public class book implements Serializable {
+public class Book implements Serializable { // changed book to Book - Amel
 	
-	private String TITLE;
-	private String AUTHOR;
-	private String CALLNO;
-	private int ID;
+	private String title;  //changed TITLE to title - Amel
+	private String author; //changed AUTHOR to author - Amel
+	private String callNo; //changed CALLNO to callNo - Amel
+	private int id; //changed ID to id - Amel
 	
 	private enum STATE { AVAILABLE, ON_LOAN, DAMAGED, RESERVED };
 	private STATE State;
 	
 	
 	public book(String author, String title, String callNo, int id) {
-		this.AUTHOR = author;
-		this.TITLE = title;
-		this.CALLNO = callNo;
-		this.ID = id;
+		this.author = author; //changed AUTHOR to author - Amel
+		this.title = title; //changed TITLE to title - Amel
+		this.callNo = callNo; //changed CALLNO to callNo - Amel
+		this.id = id; //changed ID to id - Amel
 		this.State = STATE.AVAILABLE;
 	}
 	
@@ -32,32 +32,32 @@ public class book implements Serializable {
 		return sb.toString();
 	}
 
-	public Integer ID() {
-		return ID;
+	public Integer id() { //changed ID to id - Amel
+		return id;
 	}
 
-	public String TITLE() {
-		return TITLE;
+	public String title() { //changed TITLE to title - Amel
+		return title;
 	}
 
 
 	
-	public boolean AVAILABLE() {
+	public boolean available() { //changed AVAILABLE to available - Amel
 		return State == STATE.AVAILABLE;
 	}
 
 	
-	public boolean On_loan() {
+	public boolean onLoan() { //changed On_Loan to onLoan - Amel
 		return State == STATE.ON_LOAN;
 	}
 
 	
-	public boolean IS_Damaged() {
+	public boolean isDamaged() { //changed IS_Damaged to isDamaged - Amel
 		return State == STATE.DAMAGED;
 	}
 
 	
-	public void Borrow() {
+	public void borrow() { //changed Borrow to borrow - Amel
 		if (State.equals(STATE.AVAILABLE)) {
 			State = STATE.ON_LOAN;
 		}
@@ -68,7 +68,7 @@ public class book implements Serializable {
 	}
 
 
-	public void Return(boolean DAMAGED) {
+	public void Return(boolean DAMAGED) { //changed Return to return - Amel
 		if (State.equals(STATE.ON_LOAN)) {
 			if (DAMAGED) {
 				State = STATE.DAMAGED;
@@ -83,7 +83,7 @@ public class book implements Serializable {
 	}
 
 	
-	public void Repair() {
+	public void Repair() { //changed Repair to repair - Amel
 		if (State.equals(STATE.DAMAGED)) {
 			State = STATE.AVAILABLE;
 		}
