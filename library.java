@@ -24,10 +24,10 @@ public class library implements Serializable {
 	private static final double damageFee = 2.0;
 	
 	private static library SeLf;
-	private int BOOK_ID;
-	private int MEMBER_ID;
-	private int LOAN_ID;
-	private Date LOAN_DATE;
+	private int bookId; // changed the BOOK_ID to bookId -Amel
+	private int memberId; // changed the MEMBER_ID to memberId -Amel
+	private int loanId; // changed the LOAN_ID to loanId -Amel
+	private Date loanDate; // changed the LOAN_DATE to loanDate -Amel
 	
 	private Map<Integer, book> CATALOG;
 	private Map<Integer, member> MEMBERS;
@@ -42,39 +42,39 @@ public class library implements Serializable {
 		LOANS = new HashMap<>();
 		CURRENT_LOANS = new HashMap<>();
 		DAMAGED_BOOKS = new HashMap<>();
-		BOOK_ID = 1;
-		MEMBER_ID = 1;		
-		LOAN_ID = 1;		
+		bookId = 1; // changed the BOOK_ID to bookId -Amel
+		memberId = 1;	// changed the MEMBER_ID to memberId -Amel	
+		loanId = 1; // changed the LOAN_ID to loanId -Amel		
 	}
 
 	
 	public static synchronized library INSTANCE() {		
-		if (SeLf == null) {
+		if (self == null) { // changed the SeLf to self -Amel
 			Path PATH = Paths.get(libraryFile);			
 			if (Files.exists(PATH)) {	
-				try (ObjectInputStream LiF = new ObjectInputStream(new FileInputStream(libraryFile));) {
+				try (ObjectInputStream lif = new ObjectInputStream(new FileInputStream(libraryFile));){ // changed the LiF to lif -Amel
 			    
-					SeLf = (library) LiF.readObject();
-					Calendar.INSTANCE().Set_dATE(SeLf.LOAN_DATE);
-					LiF.close();
+					SeLf = (library) lif.readObject(); // changed the LiF to lif -Amel
+					Calendar.INSTANCE().Set_dATE(SeLf.LOAN_DATE); // changed the Set_dATE to SetDate -Amel
+					lif.close(); // changed the LiF to lif -Amel
 				}
 				catch (Exception e) {
 					throw new RuntimeException(e);
 				}
 			}
-			else SeLf = new library();
+			else self = new library(); // changed the SeLf to self -Amel
 		}
-		return SeLf;
+		return self; // changed the SeLf to self -Amel
 	}
 
 	
 	public static synchronized void SAVE() {
-		if (SeLf != null) {
-			SeLf.LOAN_DATE = Calendar.INSTANCE().Date();
-			try (ObjectOutputStream LoF = new ObjectOutputStream(new FileOutputStream(libraryFile));) {
-				LoF.writeObject(SeLf);
-				LoF.flush();
-				LoF.close();	
+		if (self != null) {  // changed the SeLf to self -Amel
+			self.LOAN_DATE = Calendar.INSTANCE().Date(); // changed the SeLf to self -Amel
+			try (ObjectOutputStream LoF = new ObjectOutputStream(new FileOutputStream(libraryFile));) { // changed the LoF to lof -Amel
+				lof.writeObject(SeLf); // changed the LoF to lof -Amel
+				lof.flush(); // changed the LoF to lof -Amel
+				lof.close(); // changed the LoF to lof -Amel	 
 			}
 			catch (Exception e) {
 				throw new RuntimeException(e);
@@ -83,28 +83,28 @@ public class library implements Serializable {
 	}
 
 	
-	public int BookID() {
-		return BOOK_ID;
+	public int bookId() { // changed the BookID to bookId -Amel	 
+		return bookId; // changed the BookID to bookId -Amel
 	}
 	
 	
-	public int MemberID() {
-		return MEMBER_ID;
+	public int memberId() { // changed the MEMBER_ID to memberId -Amel
+		return memberId; // changed the MEMBER_ID to memberId -Amel
 	}
 	
 	
-	private int NextBID() {
-		return BOOK_ID++;
-	}
-
-	
-	private int NextMID() {
-		return MEMBER_ID++;
+	private int nextBid() { // changed the NextBID to nextBid -Amel
+		return bookId++; // changed the BookID to bookId -Amel
 	}
 
 	
-	private int NextLID() {
-		return LOAN_ID++;
+	private int NextMID() { // changed the NextMID to NextMid -Amel
+		return MEMBER_ID++; // changed the MEMBER_ID to memberId -Amel
+	}
+
+	
+	private int NextLID() { // changed the NextMID to NextMid -Amel
+		return LoanId++; // changed the LOAN_ID to LoanId -Amel
 	}
 
 	
@@ -127,7 +127,7 @@ public class library implements Serializable {
 		member member = new member(lastName, firstName, email, phoneNo, NextMID());
 		MEMBERS.put(member.GeT_ID(), member);		
 		return member;
-	}
+	} 
 
 	
 	public book Add_book(String a, String t, String c) {		
