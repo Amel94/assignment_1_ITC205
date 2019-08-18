@@ -1,3 +1,4 @@
+//Author:...., Mediator:...., Reviewer:....
 import java.util.ArrayList;
 import java.util.List;
 
@@ -5,7 +6,7 @@ public class BorrowBookControl {
 	
 	private BorrowBookUI UI;
 	
-	private library LIBRARY;
+	private library library; //variable name changed from 'LIBRARY' to 'library' - Date: ..., Time:: ...
 	private member M;
 	private enum CONTROL_STATE { INITIALISED, READY, RESTRICTED, SCANNING, IDENTIFIED, FINALISING, COMPLETED, CANCELLED };
 	private CONTROL_STATE State;
