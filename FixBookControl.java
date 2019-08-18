@@ -1,3 +1,4 @@
+// Author:....., Mediator:....., Reviewer:....
 public class FixBookControl {
 	
 	private FixBookUI UI;
@@ -5,7 +6,7 @@ public class FixBookControl {
 	private CONTROL_STATE StAtE;
 	
 	private library LIB;
-	private book Cur_Book;
+	private book Cur_Book; //Variable name 'Cur_Book' changed to 'currentBook' - Date:...., Time:....
 
 
 	public FixBookControl() {
